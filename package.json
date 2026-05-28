@@ -1,0 +1,30 @@
+{
+  "name": "forgeq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "worker": "node src/workers/taskWorker.js",
+    "worker:multi": "npm run worker & npm run worker",
+    "db:init": "node -e \"require('dotenv').config(); const db = require('./src/db'); (async () => { await db.initializeDatabase(); console.log('DB initialized'); })();\"",
+    "test": "node test-integration.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bull": "^4.16.5",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.20.0",
+    "redis": "^5.12.1",
+    "uuid": "^14.0.0",
+    "ws": "^8.20.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
