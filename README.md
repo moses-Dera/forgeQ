@@ -29,77 +29,41 @@ PostgreSQL Database
 
 ## 📦 Prerequisites
 
-- Node.js 16+
-- Redis (running on localhost:6379)
-- PostgreSQL (running on localhost:5432)
+- Node.js 18+
+- Docker & Docker Compose (e.g., Docker Desktop)
 
-## 🚀 Setup
+## 🚀 Setup & Execution
 
-### 1. Install Dependencies
-
+### 1. Start Databases (Postgres & Redis)
+Bring up the database and cache containers in the background:
 ```bash
-npm install
-npm install --prefix client
+docker compose up -d
 ```
 
-### 2. Database Setup
-
-Create PostgreSQL database:
-
+### 2. Install Dependencies
+Install Node modules for the backend and the frontend dashboard:
 ```bash
-createdb forgeq
+npm install && npm install --prefix client
 ```
 
-Initialize schema:
-
+### 3. Initialize Database Schema
+Create the required PostgreSQL tables and indexes:
 ```bash
 npm run db:init
 ```
 
-### 3. Environment Variables
-
-`.env` file is already created with defaults. Adjust if needed:
-
-```env
-NODE_ENV=development
-PORT=3000
-REDIS_URL=redis://localhost:6379
-DATABASE_URL=postgres://localhost:5432/forgeq
-WORKER_COUNT=2
-```
-
-## 🎯 Running the System
-
-### Terminal 1: Start the API Server
-
+### 4. Run the System
+Launch the API server, worker, and React dashboard concurrently with a single command:
 ```bash
-npm start
-# or with auto-reload:
-npm run dev
+npm run dev:all
 ```
+Once started, open **`http://localhost:5173`** in your browser to interact with the dashboard.
 
-Server runs on `http://localhost:3000`
-
-### Terminal 2: Start Worker(s)
-
-```bash
-npm run worker
-```
-
-Or start multiple workers:
-
-```bash
-npm run worker:multi
-```
-
-### Terminal 3: Start Dashboard
-
-```bash
-cd client
-npm run dev
-```
-
-Dashboard opens at `http://localhost:5173`
+### (Alternative) Multi-Terminal Running
+If you prefer to run services in separate terminals:
+- **Start Backend**: `npm run dev` (Runs Express API on `http://localhost:3000`)
+- **Start Worker**: `npm run worker` (Processes queue tasks)
+- **Start Dashboard**: `npm run --prefix client dev` (Serves React frontend on `http://localhost:5173`)
 
 ## 🎮 Control Panel Features
 
