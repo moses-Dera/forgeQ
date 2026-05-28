@@ -9,7 +9,8 @@
     "worker": "node src/workers/taskWorker.js",
     "worker:multi": "npm run worker & npm run worker",
     "db:init": "node -e \"require('dotenv').config(); const db = require('./src/db'); (async () => { await db.initializeDatabase(); console.log('DB initialized'); })();\"",
-    "test": "node test-integration.js"
+    "test": "node test-integration.js",
+    "dev:all": "concurrently --kill-others \"npm run dev\" \"npm run worker\" \"npm run --prefix client dev\""
   },
   "keywords": [],
   "author": "",
@@ -25,6 +26,7 @@
     "ws": "^8.20.1"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "nodemon": "^3.1.14"
   }
 }
