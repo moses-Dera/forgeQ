@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FaBolt, FaHourglassHalf, FaCog, FaCheckCircle, FaTimesCircle, FaMoon, FaClipboardList } from 'react-icons/fa';
 
 export function Dashboard() {
   const [status, setStatus] = useState({
@@ -44,7 +45,7 @@ export function Dashboard() {
       <header style={{ marginBottom: '40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div>
           <h1 style={{ fontSize: '36px', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <span style={{ fontSize: '40px' }}>⚡</span> ForgeQ
+            <FaBolt style={{ fontSize: '36px', color: 'var(--accent-yellow)' }} /> ForgeQ
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '18px' }}>Distributed Task Processing Engine</p>
         </div>
@@ -62,10 +63,10 @@ export function Dashboard() {
 
       {/* Status Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px', marginBottom: '40px' }}>
-        <StatusCard title="Queued" value={totalQueued} type="queued" icon="⏳" />
-        <StatusCard title="Processing" value={totalProcessing} type="processing" icon="⚙️" />
-        <StatusCard title="Completed" value={totalCompleted} type="completed" icon="✅" />
-        <StatusCard title="Failed" value={totalFailed} type="failed" icon="❌" />
+        <StatusCard title="Queued" value={totalQueued} type="queued" icon={<FaHourglassHalf />} />
+        <StatusCard title="Processing" value={totalProcessing} type="processing" icon={<FaCog />} />
+        <StatusCard title="Completed" value={totalCompleted} type="completed" icon={<FaCheckCircle />} />
+        <StatusCard title="Failed" value={totalFailed} type="failed" icon={<FaTimesCircle />} />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '24px' }}>
@@ -76,7 +77,7 @@ export function Dashboard() {
           </h2>
           {status.workers.length === 0 ? (
             <div style={{ textAlign: 'center', color: 'var(--text-secondary)', padding: '40px 0' }}>
-              <span style={{ fontSize: '32px', display: 'block', marginBottom: '12px' }}>💤</span>
+              <span style={{ display: 'block', marginBottom: '12px' }}><FaMoon style={{ fontSize: '32px', color: 'var(--text-secondary)' }} /></span>
               No workers connected
             </div>
           ) : (
@@ -113,7 +114,7 @@ export function Dashboard() {
           <div style={{ overflowY: 'auto', flex: 1, paddingRight: '8px' }}>
             {status.recentTasks.length === 0 ? (
               <div style={{ textAlign: 'center', color: 'var(--text-secondary)', padding: '40px 0' }}>
-                <span style={{ fontSize: '32px', display: 'block', marginBottom: '12px' }}>📋</span>
+                <span style={{ display: 'block', marginBottom: '12px' }}><FaClipboardList style={{ fontSize: '32px', color: 'var(--text-secondary)' }} /></span>
                 No tasks in the queue yet
               </div>
             ) : (

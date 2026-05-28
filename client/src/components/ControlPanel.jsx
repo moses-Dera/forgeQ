@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { FaSlidersH, FaFire, FaPause, FaPlay, FaTrash } from 'react-icons/fa';
 
 export function ControlPanel() {
   const [loading, setLoading] = useState(false);
@@ -33,7 +34,7 @@ export function ControlPanel() {
       zIndex: 1000,
     }}>
       <h3 style={{ marginTop: 0, marginBottom: '20px', fontSize: '18px', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-        ⚙️ Control Panel
+        <FaSlidersH /> Control Panel
       </h3>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -44,7 +45,7 @@ export function ControlPanel() {
           onMouseOver={(e) => !loading && (e.currentTarget.style.transform = 'translateY(-2px)')}
           onMouseOut={(e) => !loading && (e.currentTarget.style.transform = 'translateY(0)')}
         >
-          <span>🔥</span> Load Test (100)
+          <FaFire /> Load Test (100)
         </button>
 
         <button
@@ -54,7 +55,7 @@ export function ControlPanel() {
           onMouseOver={(e) => !loading && (e.currentTarget.style.transform = 'translateY(-2px)')}
           onMouseOut={(e) => !loading && (e.currentTarget.style.transform = 'translateY(0)')}
         >
-          <span>⏸️</span> Pause Queue
+          <FaPause /> Pause Queue
         </button>
 
         <button
@@ -64,7 +65,7 @@ export function ControlPanel() {
           onMouseOver={(e) => !loading && (e.currentTarget.style.transform = 'translateY(-2px)')}
           onMouseOut={(e) => !loading && (e.currentTarget.style.transform = 'translateY(0)')}
         >
-          <span>▶️</span> Resume Queue
+          <FaPlay /> Resume Queue
         </button>
 
         <button
@@ -74,7 +75,7 @@ export function ControlPanel() {
           onMouseOver={(e) => !loading && (e.currentTarget.style.transform = 'translateY(-2px)')}
           onMouseOut={(e) => !loading && (e.currentTarget.style.transform = 'translateY(0)')}
         >
-          <span>🗑️</span> Clear Failed
+          <FaTrash /> Clear Failed
         </button>
       </div>
 
