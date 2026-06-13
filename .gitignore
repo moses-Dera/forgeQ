@@ -19,3 +19,12 @@ npm-debug.log*
 *.sublime-workspace
 client/dist/
 client/node_modules/
+
+# Agent config
+.agents/
+.agent/
+.cursor/
+.windsurf/
+.github/
+.idea/
+
